@@ -6,7 +6,7 @@ y = 5 * sin(2*pi*f*t);
 b = 4;
 sample_max = 2^(b-1)-1;
 max_amplitude = max(y);
-y_quantized = floor(y*sample_max) / max_amplitude;
+y_quantized = floor((y*sample_max + 0.5)/max_amplitude )* max_amplitude;
 hold on
 stem(2000 * t(1:200), y_quantized(1:200));
-%plot(t,y);
+plot(2000 * t(1:200),y(1:200)*sample_max, "red");
