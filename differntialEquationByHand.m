@@ -15,6 +15,7 @@ function output = differntialEquationByHand(yCofficient, xCofficient, input)
         output(i) = output(i) + xCofficient(j)*input(i-j+1);
       end
     end
+    output(i) = output(i) / yCofficient(1);
   end
   
 end

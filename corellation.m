@@ -1,17 +1,21 @@
-n = -3:6;
+n = -4:2;
 startX = 4;
-x = [1 2 3 4 5 6 7 8 9 10];
+x = [2 -1 3 7 1 2 -3];
 startY = 5;
-y = [1 2 3 4 5 6 7 8 9 10];
+y = [1 -1 2 -2 4 1 -2 5];
 
-[XY,lags] = xcorr(x, y);
+[XY,lags] = xcorr(x,y);
+%test = xcorr(y,x);
+%subplot(1,1,1);
+%plot(test);
 [XXY,LAGS] = corellationByHand(x,y);
 subplot(3, 1, 1);
-stem(n,x,'.');
+xn = -4:2;
+stem(xn,x,'.');
 title('x');
 subplot(3, 1, 2);
-n = -4:5;
-stem(n,y,'.');
+yn = -4:3;
+stem(yn,y,'.');
 title('y');
 subplot(3, 1, 3);
 stem(lags,XY);
