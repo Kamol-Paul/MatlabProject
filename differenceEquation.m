@@ -1,5 +1,5 @@
 %y[n] = .97 * y[n-1] + x[n];
-%y[n] = y[n] + y[n-2] + x[n];
+%y[n] = y[n-1] + y[n-2] + x[n];
 
 
 xCofficinet = [1 0];

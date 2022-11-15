@@ -1,0 +1,21 @@
+sf = 96;
+n = 0:80;
+original_signal = sin(2*pi*6/sf*n) + sin(2*pi*12/sf*n);
+subplot(221);
+stem(n,original_signal);
+axis([0 80 -max(abs(original_signal)) max(abs(original_signal))]);
+title("Original signal");
+bit = 4;
+max_level_for_quantize = 2^(bit - 1) - 1;
+max_amplitude_of_the_signal = max(abs(original_signal));
+
+quantize_signal = floor(original_signal * max_level_for_quantize /max_amplitude_of_the_signal + 0.5);
+subplot(222);
+stem(n, quantize_signal);
+axis([0 80 -max_level_for_quantize max_level_for_quantize]);
+title("Quantize signal");
+frequency_of_original_signal = fft(quantize_signal);
+subplot(223);
+stem(n * sf /length(n) ,real(frequency_of_original_signal));
+axis([0 96 min(frequency_of_original_signal) max(frequency_of_original_signal)]);
+title("Quantize signal requency");
